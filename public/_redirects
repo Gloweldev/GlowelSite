@@ -1,0 +1,20 @@
+# Netlify redirects for SPA
+# Redirect all routes to index.html for client-side routing
+/*    /index.html   200
+
+# Specific redirects for better SEO
+/blog    /index.html   200
+/blog/*    /index.html   200
+/servicios    /index.html   200
+/proceso    /index.html   200
+/contacto    /index.html   200
+/404    /index.html   200
+/500    /index.html   200
+
+# Force HTTPS redirect
+http://glowel.dev/*    https://glowel.dev/:splat    301!
+http://www.glowel.dev/*    https://glowel.dev/:splat    301!
+https://www.glowel.dev/*    https://glowel.dev/:splat    301!
+
+# Remove trailing slashes
+/*/    /:splat    301
