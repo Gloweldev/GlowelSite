@@ -12,9 +12,9 @@
 /500    /index.html   200
 
 # Force HTTPS redirect
-http://glowel.dev/*    https://glowel.dev/:splat    301!
-http://www.glowel.dev/*    https://glowel.dev/:splat    301!
-https://www.glowel.dev/*    https://glowel.dev/:splat    301!
+http://glowel.com.mx/*    https://glowel.com.mx/:splat    301!
+http://www.glowel.com.mx/*    https://glowel.com.mx/:splat    301!
+https://www.glowel.com.mx/*    https://glowel.com.mx/:splat    301!
 
 # Remove trailing slashes
 /*/    /:splat    301
