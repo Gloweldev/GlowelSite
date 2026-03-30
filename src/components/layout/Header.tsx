@@ -4,12 +4,20 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, Globe, Cog, Brain, BarChart3, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
+
+  // Close menus automatically on any natural route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setIsServicesOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -107,7 +115,6 @@ const Header = () => {
                       <Link
                         key={pillar.name}
                         href={pillar.href}
-                        onClick={() => setTimeout(() => setIsServicesOpen(false), 150)}
                         className="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors group"
                       >
                         <pillar.icon className="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition-colors" />
@@ -153,7 +160,7 @@ const Header = () => {
                 key={item.name}
                 href={item.href}
                 className="block px-3 py-2.5 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium rounded-lg transition-colors"
-                onClick={() => setTimeout(() => setIsMobileMenuOpen(false), 150)}
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
               </Link>
@@ -178,12 +185,6 @@ const Header = () => {
                     <Link
                       key={pillar.name}
                       href={pillar.href}
-                      onClick={() => {
-                        setTimeout(() => {
-                          setIsServicesOpen(false);
-                          setIsMobileMenuOpen(false);
-                        }, 150);
-                      }}
                       className="flex items-center gap-3 px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                     >
                       <pillar.icon className="w-4 h-4" />
