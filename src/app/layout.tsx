@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -211,9 +211,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans bg-white text-slate-900 overflow-x-hidden selection:bg-blue-600/30">
         {children}
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-        )}
+        <GoogleTagManager gtmId="GTM-M2L7NWJL" />
       </body>
     </html>
   );
