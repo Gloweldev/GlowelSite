@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, Globe, Cog, Brain, BarChart3, Zap } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -72,7 +73,7 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className={`text-sm font-medium transition-colors hover:text-blue-500 ${
@@ -80,7 +81,7 @@ const Header = () => {
                 }`}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
 
             {/* Services Dropdown */}
@@ -103,7 +104,7 @@ const Header = () => {
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 bg-white rounded-xl shadow-2xl border border-slate-200/60 overflow-hidden">
                   <div className="p-2">
                     {servicePillars.map((pillar) => (
-                      <a
+                      <Link
                         key={pillar.name}
                         href={pillar.href}
                         onClick={() => setIsServicesOpen(false)}
@@ -111,7 +112,7 @@ const Header = () => {
                       >
                         <pillar.icon className="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition-colors" />
                         <span className="text-sm font-medium">{pillar.name}</span>
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -148,14 +149,14 @@ const Header = () => {
         <div className="lg:hidden bg-white border-t shadow-lg">
           <div className="px-4 py-4 space-y-1">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="block px-3 py-2.5 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
 
             {/* Mobile Services Accordion */}
@@ -174,7 +175,7 @@ const Header = () => {
               {isServicesOpen && (
                 <div className="ml-4 space-y-1 mt-1">
                   {servicePillars.map((pillar) => (
-                    <a
+                    <Link
                       key={pillar.name}
                       href={pillar.href}
                       onClick={() => {
@@ -185,7 +186,7 @@ const Header = () => {
                     >
                       <pillar.icon className="w-4 h-4" />
                       {pillar.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}

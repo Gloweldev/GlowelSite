@@ -14,14 +14,6 @@ export const metadata: Metadata = {
   keywords: "ingeniería de software, inteligencia artificial México, software a medida empresas, análisis de datos, desarrollo IA, consultora tecnológica México, automatización de procesos empresariales, arquitecturas web escalables, desarrollo web avanzado, sistemas empresariales",
   authors: [{ name: "Glowel - Ingeniería de Software y Datos" }],
   metadataBase: new URL("https://glowel.com.mx"),
-  alternates: {
-    canonical: "/",
-    languages: {
-      "es-MX": "/",
-      "es": "/",
-      "x-default": "/",
-    },
-  },
   openGraph: {
     title: "Ingeniería de Software, IA y Análisis de Datos | Glowel",
     description: "Desarrollamos soluciones tecnológicas complejas y a medida para escalar la operación de empresas en México.",
