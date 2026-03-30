@@ -107,7 +107,7 @@ const Header = () => {
                       <Link
                         key={pillar.name}
                         href={pillar.href}
-                        onClick={() => setIsServicesOpen(false)}
+                        onClick={() => setTimeout(() => setIsServicesOpen(false), 150)}
                         className="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-700 hover:bg-blue-50 hover:text-blue-600 transition-colors group"
                       >
                         <pillar.icon className="w-5 h-5 text-slate-400 group-hover:text-blue-500 transition-colors" />
@@ -153,7 +153,7 @@ const Header = () => {
                 key={item.name}
                 href={item.href}
                 className="block px-3 py-2.5 text-slate-700 hover:text-blue-600 hover:bg-blue-50 font-medium rounded-lg transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => setTimeout(() => setIsMobileMenuOpen(false), 150)}
               >
                 {item.name}
               </Link>
@@ -179,8 +179,10 @@ const Header = () => {
                       key={pillar.name}
                       href={pillar.href}
                       onClick={() => {
-                        setIsServicesOpen(false);
-                        setIsMobileMenuOpen(false);
+                        setTimeout(() => {
+                          setIsServicesOpen(false);
+                          setIsMobileMenuOpen(false);
+                        }, 150);
                       }}
                       className="flex items-center gap-3 px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                     >
