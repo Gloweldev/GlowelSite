@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -189,6 +188,17 @@ export default function RootLayout({
   return (
     <html lang="es-MX" className={`${inter.variable} antialiased scroll-smooth`}>
       <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Q6EZE68P2"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-0Q6EZE68P2');
+            `,
+          }}
+        />
         <link rel="mask-icon" href="/assets/GlowelClaro.svg" color="#020617" />
         <link rel="image_src" href="https://glowel.com.mx/assets/GlowelClaro.png?v=2" />
         <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
@@ -211,7 +221,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans bg-white text-slate-900 overflow-x-hidden selection:bg-blue-600/30">
         {children}
-        <GoogleAnalytics gaId="G-0Q6EZE68P2" />
       </body>
     </html>
   );
