@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -211,7 +211,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans bg-white text-slate-900 overflow-x-hidden selection:bg-blue-600/30">
         {children}
-        <GoogleTagManager gtmId="GTM-M2L7NWJL" />
+        <GoogleAnalytics gaId="G-0Q6EZE68P2" />
       </body>
     </html>
   );
