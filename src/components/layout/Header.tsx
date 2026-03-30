@@ -29,13 +29,15 @@ const Header = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      // Prevent desktop click-outside listener from destroying mobile menu links on mousedown
+      if (isMobileMenuOpen) return;
       if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
         setIsServicesOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [isMobileMenuOpen]);
 
   const servicePillars = [
     { name: "Desarrollo Web Avanzado", icon: Globe, href: "/servicios/desarrollo-web" },
