@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Análisis de Datos e Inteligencia Corporativa | Glowel Ingeniería",
   description: "Desarrollo de cuadros de mando empresariales (Dashboards), limpieza de datos ETL y predicción estadística para la correcta toma de decisiones.",
-  keywords: "análisis de datos, inteligencia corporativa, business intelligence, dashboards web, limpieza de bases de datos, pronóstico de ventas, ciencia de datos méxico"
+  keywords: "análisis de datos para empresas, consultoría en big data y analytics, desarrollo de dashboards interactivos empresariales, business intelligence a medida, visualización de datos corporativos, servicios de ciencia de datos, análisis predictivo para negocios y ventas, minería de datos y etl inteligente, auditoría de bases de datos as a service, arquitectura de data lakes y data warehouses, ingeniero de datos méxico sql, agencia de analítica de datos b2b, herramientas de inteligencia de negocios a la medida, toma de decisiones basada en datos bi, análisis estadístico avanzado corporativo, integración de power bi tableau, limpieza y estructuración de lagos de datos, consultor data scientist senior, creación de modelos predictivos de mercado, graficas para negocio, dashboard de ventas, analizar datos de mi empresa, organizar datos, experto en excel avanzado, visualizar ventas en dashboards, saber cuanto vendo, predecir ventas, acomodar informacion de mi empresa, ciencia de datos consultoria, hacer tableros de informacion"
 };
 
 export default function AnalisisDatosPage() {

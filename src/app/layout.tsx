@@ -11,7 +11,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Ingeniería de Software, IA y Análisis de Datos | Glowel México",
   description: "Firma de ingeniería especializada en desarrollo web avanzado, software a medida, inteligencia artificial y automatización de procesos. Soluciones complejas para empresas.",
-  keywords: "ingeniería de software, inteligencia artificial México, software a medida empresas, análisis de datos, desarrollo IA, consultora tecnológica México, automatización de procesos empresariales, arquitecturas web escalables, desarrollo web avanzado, sistemas empresariales",
+  keywords: "firma de ingeniería de software, agencia tecnológica méxico, transformación digital para empresas, consultora tecnológica y de desarrollo, desarrollo de soluciones tecnológicas complejas, proveedor de servicios de software tics, ingeniería informática para corporativos, desarrollo tecnológico a medida, startup de desarrollo de software innovador, expertos en tecnologías de la información, consultoría en arquitectura de sistemas, desarrollo cloud aws google cloud, ingeniería de datos y software avanzado, soluciones deep tech, desarrolladores de software freelance bidiomas, servicios de programación y desarrollo de sistemas, outsourcing tecnológico de alto nivel, empresa de tecnologia, empresa de programadores, agencia de paginas web y apps, hacer sistema web, crear tecnologia para negocio, servicios de programacion, hacer aplicacion, quiero crear un software, como sistematizar mi negocio, expertos en tecnologia, desarrollo de plataformas de internet, programadores web y sistemas, hacer programa informatico",
   authors: [{ name: "Glowel - Ingeniería de Software y Datos" }],
   metadataBase: new URL("https://glowel.com.mx"),
   openGraph: {

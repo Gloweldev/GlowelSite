@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Desarrollo e Integración de Inteligencia Artificial | Glowel",
   description: "Entrenamiento de modelos de Machine Learning (NLP, Visión) desde cero o integración de LLMs (GPT, Claude) integrados en el flujo de trabajo de tu empresa.",
-  keywords: "desarrollo de inteligencia artificial, modelos de machine learning, chatbots NLP, GPT-4 para empresas, fine-tuning IA, automatización inteligente"
+  keywords: "desarrollador de ia, empresa de inteligencia artificial méxico, desarrollo de ia a medida, consultoría en inteligencia artificial, agencia de machine learning, desarrollo de algoritmos de deep learning, integración de chatgpt en empresas, modelos de visión por computadora, automatización cognitiva, soluciones de inteligencia artificial para negocios, desarrollador de modelos nlp, procesamiento de lenguaje natural, ingeniero de machine learning freelance, agencia de ia generativa, chatbots con ia integrada, rag retrieval augmented generation español, servicios de data science e ia, desarrollo de redes neuronales artificiales, integración api openai claude, desarrollo de ia conversacional, machine learning as a service méxico, ia, inteligencia artificial, desarrollar mi ia, hacer una ia para mi negocio, chat gpt para empresas, chat bot con ia, usar ia para vender mas, inteligencia artificial para pymes, crear inteligencia artificial propia, alguien que me programe una ia, chatbot inteligente, ia para whatsapp, como hacer una ia para mi tienda"
 };
 
 export default function InteligenciaArtificialPage() {

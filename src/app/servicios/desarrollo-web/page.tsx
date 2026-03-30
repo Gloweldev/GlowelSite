@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Desarrollo de Páginas Web y Tiendas Online | Glowel Ingeniería",
   description: "Construimos plataformas web corporativas, e-commerce de alto volumen y sitios B2B utilizando las tecnologías más avanzadas del mercado: React y Next.js.",
-  keywords: "desarrollo web, páginas web empresariales, tiendas online, pasarelas de pago, desarrollo e-commerce en México, páginas a medida, Next.js, React, portales B2B, diseño UX UI, Glowel"
+  keywords: "desarrollo web avanzado, creación de sitios web corporativos, agencia de desarrollo web escalable, programación frontend y backend, desarrollo de plataformas web complejas, arquitectura cloud para sitios web, desarrollo web next.js react, diseño y desarrollo web de alto rendimiento, optimización seo técnica, desarrollador web full stack méxico, desarrollo de e-commerce a la medida, sistemas web progresivos pwa, mantenimiento web experto, pasarelas de pago integración web, desarrollo web seo optimizado, programador web senior, paginas web, crear mi pagina web, hacer sitio web, diseñador de paginas web, agencia de paginas web, crear tienda online, alguien que me haga una pagina, paginas web baratas y profesionales, hacer web, desarrollo de paginas web, quiero una pagina de internet para mi negocio, hacer e commerce, crear pagina con pasarela de pago, programador frontend"
 };
 
 export default function DesarrolloWebPage() {

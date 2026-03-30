@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Desarrollo de Software a Medida (ERP/CRM) | Glowel Ingeniería",
   description: "Desarrollo de CRMs empresariales, flujos ERP y herramientas web internas para digitalizar tu operación con alta seguridad.",
-  keywords: "software a medida, desarrollo de CRM, desarrollo de ERP corporativo, automatización de sistemas empresariales, software administrativo web, dashboards, software en México"
+  keywords: "desarrollo de software a medida, fábrica de software méxico, creación de sistemas erp personalizados, desarrollo de crm a la medida, ingeniería de software corporativo, desarrollo de software b2b, sistemas de gestión empresarial a medida, desarrollo de plataformas saas, desarrolladores de software y aplicaciones, arquitectura de software cloud native, desarrollo de software backend, programador de sistemas a medida, digitalización de procesos empresariales, modernización de sistemas legacy, desarrollo de software escalable, agencia de software boutique méxico, desarrollo de bases de datos custom, outsourcing de desarrollo de software corporativo, crear programa para pc, hacer un sistema para negocio, crear app, alguien que me haga un programa, software para mi empresa, sistema de cobro, sistema de inventario a medida, desarrollador de apps, quiero un programa para mi negocio, crear un crm propio, ingeniero en sistemas programador"
 };
 
 export default function SoftwareAMedidaPage() {

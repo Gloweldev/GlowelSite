@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Automatizaciones de Procesos y Software (API/Webhooks) | Glowel",
   description: "Eliminamos tareas repetitivas mediante RPA y scripts de conexión. Sincronizamos sistemas CRM/ERP, enviamos correos masivos inteligentes y notificaciones automatizadas por WhatsApp.",
-  keywords: "automatización empresarial, Make, Zapier, Webhooks API, integración de CRM, automatizaciones de marketing, bots de whatsapp"
+  keywords: "automatización de procesos de negocio rpa, desarrollo de flujos de trabajo automatizados, integración de apis y webhooks, automatización de procesos repetitivos, sistemas de automatización empresarial, desarrollador experto en automatizaciones, zapier make n8n integraciones a medida, automatización de tareas administrativas, scripts de automatización python, robot process automation méxico, optimización técnica de operaciones, automatización de marketing y ventas crm, bots para automatización web, pipelines de datos automatizados, servicios de hiperautomatización e ia, ingeniero de automatización de procesos, automatizar negocio, automatizar whatsapp, hacer que mi negocio funcione solo, conectar facebook con whatsapp, bot que responda solo, automatizar tareas de oficina, robot para facturar, conectar aplicaciones automáticamente, flujo de trabajo automatico, integracion de plataformas software"
 };
 
 export default function AutomatizacionesPage() {
