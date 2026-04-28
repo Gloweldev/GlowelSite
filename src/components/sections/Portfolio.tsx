@@ -34,7 +34,7 @@ const Portfolio = () => {
     },
     {
       name: "Onyx Seguridad",
-      url: "https://onyxseguridad.netlify.app/",
+      url: "https://www.onyxseguridad.com/",
       subtitle: "Plataforma Web para Empresa de Seguridad Privada",
       description:
         "Desarrollo de una plataforma web completa y funcional para una empresa de seguridad privada. Diseño personalizado, optimización de rendimiento, integración con WhatsApp para contacto directo y estructura SEO para posicionamiento local.",
