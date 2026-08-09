@@ -1,9 +1,188 @@
 @import "tailwindcss";
 
+/*
+  Tonos. Cada sección declara data-tono y con eso quedan definidos sus colores.
+  Así un mismo bloque de contenido se ve bien sobre claro y sobre oscuro sin
+  repetir condicionales de color en el markup.
+  Los valores son la paleta que ya usaba el sitio, solo que nombrada.
+*/
+@layer base {
+  :root,
+  [data-tono="claro"] {
+    --superficie: #ffffff;
+    --tinta: #0b1b27; /* petróleo del logotipo */
+    --suave: #48606f;
+    --tenue: #8598a5;
+    --linea: #e4e7ea;
+    --acento: #8a5f16; /* oro rebajado: el oro de marca no contrasta sobre blanco */
+    --realce: #f6f7f8;
+    --elevado: #f6f7f8; /* tarjeta destacada sobre esta superficie */
+  }
+
+  [data-tono="gris"] {
+    --superficie: #f5f6f7;
+    --tinta: #0b1b27;
+    --suave: #48606f;
+    --tenue: #8598a5;
+    --linea: #e0e4e7;
+    --acento: #8a5f16;
+    --realce: #edf0f2;
+    --elevado: #ffffff;
+  }
+
+  [data-tono="noche"] {
+    --superficie: #0b1b27;
+    --tinta: #ffffff;
+    --suave: #a2b6c2;
+    --tenue: #6e8695;
+    --linea: #1b3243;
+    --acento: #eeb063; /* aquí sí: el oro de marca, tal cual */
+    --realce: #102636;
+    --elevado: #102636;
+  }
+}
+
 @theme inline {
-  --font-sans: var(--font-inter);
+  --font-sans: var(--fuente-cuerpo);
+  --font-titular: var(--fuente-titular);
+
+  --color-superficie: var(--superficie);
+  --color-tinta: var(--tinta);
+  --color-suave: var(--suave);
+  --color-tenue: var(--tenue);
+  --color-linea: var(--linea);
+  --color-acento: var(--acento);
+  --color-realce: var(--realce);
+  --color-elevado: var(--elevado);
+
+  /* Colores de marca, constantes: no dependen del tono de la sección. */
+  --color-marca: #eeb063;
+  --color-marca-clara: #f6c486;
+  --color-marca-honda: #b2874b;
+  --color-noche: #0b1b27;
+}
+
+/*
+  Entrada escalonada del hero. Un solo momento, al cargar, y ya.
+  El bloque de prefers-reduced-motion de abajo la deja en su estado final.
+*/
+@keyframes emerge {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.emerge {
+  animation: emerge 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Recorrido más corto: para las piezas pequeñas del sitio de muestra. */
+@keyframes brota {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.brota {
+  animation: brota 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/*
+  La tarjeta a la que apunta el enlace de «¿En cuál te reconoces?».
+
+  El fondo se tiñe con el oro de marca en lugar de usar --realce: sobre el tono
+  noche, realce y superficie se distinguen apenas y el resaltado no se veía.
+  El contorno se queda mientras la tarjeta siga siendo el destino; el destello
+  solo avisa a la llegada, dos veces, y se apaga.
+
+  Van en propiedades distintas —outline el fijo, box-shadow el pulso— porque si
+  compartieran una, la animación borraría el contorno al terminar.
+*/
+.resaltable:target {
+  background-color: color-mix(in oklab, var(--acento) 9%, var(--superficie));
+  outline: 1px solid color-mix(in oklab, var(--acento) 55%, transparent);
+  animation: destella 1.5s ease-out 2;
+}
+
+/*
+  Aparición al entrar en pantalla, sin una línea de JavaScript: la animación se
+  engancha al scroll con `animation-timeline: view()`.
+
+  Va dentro de @supports porque el navegador que no lo entiende debe mostrar el
+  contenido tal cual, no esconderlo. Y dentro de la consulta de movimiento
+  porque la regla global de prefers-reduced-motion no alcanza a apagar una
+  animación de scroll: aquí ni siquiera se declara.
+*/
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .revela {
+      animation: revela linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 26%;
+    }
+  }
+}
+
+@keyframes revela {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes destella {
+  from {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--acento) 45%, transparent);
+  }
+  to {
+    box-shadow: 0 0 0 20px color-mix(in oklab, var(--acento) 0%, transparent);
+  }
 }
 
 body {
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+}
+
+/*
+  Red de seguridad para cualquier ancla: que no quede debajo del encabezado
+  fijo, que mide 5 rem en celular y 6 en pantalla ancha.
+
+  Los destinos que importan —los bloques de precio y los de servicios— llevan
+  además su propio `scroll-mt-32` en el marcado. Esta regla depende de que el
+  navegador ya considere el elemento como :target al calcular el salto, y en una
+  navegación entre páginas ese orden no está garantizado; la clase sí se aplica
+  siempre.
+*/
+:target {
+  scroll-margin-top: 8rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    /* Sin esto, un delay en línea deja el elemento invisible hasta que vence. */
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

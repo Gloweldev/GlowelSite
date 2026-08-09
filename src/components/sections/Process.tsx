@@ -1,139 +1,96 @@
-import { MessageSquare, Palette, Code, Rocket, Headphones, ArrowRight } from "lucide-react";
+import { Container, Section, Titular, Entrada, Eyebrow } from "@/components/ui";
+import { pasosProceso } from "@/data/contenido";
 
+/**
+ * El proceso como una línea de tiempo, no como una lista.
+ *
+ * Una lista de seis renglones pegados al margen izquierdo se lee como un
+ * contrato: nadie la recorre. Aquí la línea baja por el centro y los pasos se
+ * alternan a los lados, así que el ojo va y viene y el avance se siente.
+ *
+ * Lo que la vuelve útil son las marcas de cobro. En un proceso de servicio la
+ * duda real es «¿en qué momento me sacan dinero?», y en la línea se contesta
+ * sin leer: los dos primeros pasos no traen marca. El oro está reservado para
+ * esas dos etiquetas —es la información que importa— y los números van en gris.
+ *
+ * En celular la línea se recorre al margen izquierdo y todo cae de un lado,
+ * que es la única forma que cabe.
+ */
 const Process = () => {
-  const steps = [
-    {
-      icon: MessageSquare,
-      title: "Brief & Consulta",
-      description: "Analizamos tu problema de negocio y objetivos.",
-      badge: { text: "Sin costo", color: "bg-emerald-100 text-emerald-700" },
-    },
-    {
-      icon: Palette,
-      title: "Arquitectura & Prototipo",
-      description: "Diseñamos la solución visual antes de invertir.",
-      badge: {
-        text: "Prototipo sin costo",
-        color: "bg-emerald-100 text-emerald-700",
-        highlight: true,
-      },
-    },
-    {
-      icon: Code,
-      title: "Ingeniería & Código",
-      description: "Desarrollamos con arquitectura escalable.",
-      badge: {
-        text: "Entregas periódicas",
-        color: "bg-blue-100 text-blue-700",
-      },
-    },
-    {
-      icon: Rocket,
-      title: "Despliegue & QA",
-      description: "Pruebas de calidad y lanzamiento a producción.",
-      badge: { text: "Incluido", color: "bg-slate-100 text-slate-700" },
-    },
-    {
-      icon: Headphones,
-      title: "Soporte Técnico",
-      description: "Mantenimiento, escalabilidad y nuevas mejoras.",
-      badge: {
-        text: "3 meses gratis",
-        color: "bg-emerald-100 text-emerald-700",
-        highlight: true,
-      },
-    },
-  ];
-
   return (
-    <section id="metodologia" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-sm font-semibold text-blue-600 tracking-wider uppercase mb-4 block">
-            Metodología de Ingeniería
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
-            De la arquitectura al código en producción
-          </h2>
-          <p className="text-lg text-slate-500 leading-relaxed">
-            Un proceso estructurado que elimina el riesgo del desarrollo de software
-            mediante prototipos y entregas predecibles.
-          </p>
+    <Section tono="claro" id="proceso">
+      <Container>
+        <div className="mx-auto max-w-2xl text-center">
+          <Eyebrow>Cómo trabajamos</Eyebrow>
+          <Titular nivel={2} className="mt-3">
+            Seis pasos, y en cada uno sabes qué sigue.
+          </Titular>
+          <Entrada className="mt-5">
+            De la primera plática por WhatsApp al sitio publicado. En la línea
+            está marcado dónde se paga.
+          </Entrada>
         </div>
 
-        {/* Horizontal Process Steps */}
-        <div className="relative">
-          {/* Connection Arrows (Desktop only) */}
-          <div className="hidden lg:block absolute top-[52px] left-0 right-0 transform -translate-y-1/2 z-0">
-            <div className="flex items-center justify-between px-16">
-              <div className="w-16"></div> {/* Space for first step */}
-              <ArrowRight className="w-6 h-6 text-slate-300" />
-              <div className="w-16"></div> {/* Space between steps */}
-              <ArrowRight className="w-6 h-6 text-slate-300" />
-              <div className="w-16"></div> {/* Space between steps */}
-              <ArrowRight className="w-6 h-6 text-slate-300" />
-              <div className="w-16"></div> {/* Space between steps */}
-              <ArrowRight className="w-6 h-6 text-slate-300" />
-              <div className="w-16"></div> {/* Space for last step */}
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-y-12 gap-x-6 relative z-10">
-            {steps.map((step, index) => (
-              <div key={index} className="relative text-center group flex flex-col items-center">
-                {/* Step Number Badge */}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-4 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-md z-20">
-                  {index + 1}
-                </div>
-
-                {/* Icon Container */}
-                <div className="w-20 h-20 bg-slate-50 border border-slate-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-600 transition-colors duration-300 mt-2 shadow-sm group-hover:shadow-lg">
-                  <step.icon className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors duration-300" />
-                </div>
-
-                {/* Content */}
-                <h3 className="text-lg font-bold text-slate-900 mb-3 px-2">
-                  {step.title}
-                </h3>
-                
-                <p className="text-slate-500 text-sm leading-relaxed mb-5 px-4 flex-grow">
-                  {step.description}
-                </p>
-
-                {/* Status Badge */}
-                <div className="mt-auto">
+        <ol className="mx-auto mt-16 max-w-4xl lg:mt-20">
+          {pasosProceso.map((paso, i) => {
+            const izquierda = i % 2 === 0;
+            const ultimo = i === pasosProceso.length - 1;
+            return (
+              <li
+                key={paso.titulo}
+                className="relative grid grid-cols-[2rem_1fr] gap-x-5 pb-12 last:pb-0 lg:grid-cols-2 lg:gap-x-16"
+              >
+                {/*
+                  El riel va por tramos, uno por paso, del punto propio al
+                  siguiente. Uno solo de arriba abajo sobraría por debajo del
+                  último punto, que es donde el texto sigue y la línea ya no.
+                */}
+                {!ultimo && (
                   <span
-                    className={`inline-block text-xs font-semibold px-3 py-1.5 rounded-full ${
-                      step.badge.color
-                    } ${
-                      step.badge.highlight
-                        ? "ring-2 ring-emerald-200"
-                        : ""
-                    }`}
-                  >
-                    {step.badge.text}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+                    aria-hidden="true"
+                    className="absolute top-4 bottom-0 left-4 w-px bg-linea lg:left-1/2"
+                  />
+                )}
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-20">
-          <a
-            href="https://wa.me/522223281100?text=Hola,%20me%20interesa%20empezar%20mi%20proyecto%20con%20una%20revisión%20técnica%20y%20prototipo"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 text-sm"
-          >
-            Empezar con revisión técnica
-            <ArrowRight className="ml-2 w-4 h-4" />
-          </a>
-        </div>
-      </div>
-    </section>
+                <span
+                  aria-hidden="true"
+                  className="absolute top-0 left-4 flex size-8 -translate-x-1/2 items-center justify-center rounded-full border border-linea bg-superficie text-xs font-semibold tabular-nums text-tenue lg:left-1/2"
+                >
+                  {i + 1}
+                </span>
+
+                <div
+                  className={`col-start-2 ${
+                    izquierda
+                      ? "lg:col-start-1 lg:pr-4 lg:text-right"
+                      : "lg:col-start-2 lg:pl-4"
+                  }`}
+                >
+                  <h3 className="font-titular text-xl font-bold tracking-[-0.02em] text-tinta">
+                    {paso.titulo}
+                  </h3>
+                  <p className="mt-2.5 leading-relaxed text-suave">
+                    {paso.detalle}
+                  </p>
+                </div>
+
+                {/*
+                  La etiqueta de cobro parte el riel. Va `relative` a propósito:
+                  el riel está posicionado y, si no, se dibujaría encima.
+                */}
+                {paso.cobro && (
+                  <div className="col-span-full mt-10 lg:mt-12 lg:flex lg:justify-center">
+                    <span className="relative ml-4 inline-block rounded-full bg-marca px-4 py-1.5 text-sm font-semibold text-noche lg:ml-0">
+                      {paso.cobro}
+                    </span>
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </Container>
+    </Section>
   );
 };
 

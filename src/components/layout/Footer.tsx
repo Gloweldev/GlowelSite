@@ -1,145 +1,167 @@
-import { Mail, Phone, MapPin, MessageCircle, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Container,
+  IconoWhatsApp,
+  IconoFacebook,
+  IconoInstagram,
+} from "@/components/ui";
+import { REDES } from "@/data/sitio";
+
+/**
+ * Los mismos perfiles que van en `sameAs`. Que estén enlazados desde el sitio
+ * es la otra mitad del par: Google confirma la marca cuando el sitio apunta a
+ * la red y la red apunta al sitio.
+ */
+const redes = [
+  { nombre: "WhatsApp", href: REDES.whatsapp, Icono: IconoWhatsApp },
+  { nombre: "Facebook", href: REDES.facebook, Icono: IconoFacebook },
+  { nombre: "Instagram", href: REDES.instagram, Icono: IconoInstagram },
+];
+
+/**
+ * Solo destinos que existen. `#planes` llevaba a un ancla que no está en
+ * ninguna página, y «Servicios y precios» era un solo enlace cuando ya son dos
+ * pantallas distintas. Si algo se renombra o se mueve, se corrige aquí.
+ */
+const grupos = [
+  {
+    titulo: "Sitio",
+    enlaces: [
+      { nombre: "Inicio", href: "/" },
+      { nombre: "Servicios", href: "/servicios" },
+      { nombre: "Precios", href: "/precios" },
+      { nombre: "Portafolio", href: "/portafolio" },
+    ],
+  },
+  {
+    titulo: "Antes de decidir",
+    enlaces: [
+      { nombre: "Cómo trabajamos", href: "/#proceso" },
+      { nombre: "Preguntas frecuentes", href: "/#preguntas" },
+      { nombre: "Planes de mantenimiento", href: "/precios#mantenimiento" },
+      { nombre: "Contacto", href: "/#contacto" },
+    ],
+  },
+];
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-950 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* WhatsApp CTA Section */}
-        <div className="py-16 border-b border-slate-800">
-          <div className="max-w-3xl mx-auto text-center">
-            <h3 className="text-3xl font-bold mb-4 tracking-tight">
-              ¿Listo para empezar a construir?
-            </h3>
-            <p className="text-slate-400 mb-8 text-lg">
-              Agenda una consulta técnica sin compromiso. Analizamos tu proyecto y te decimos exactamente qué necesitas y cómo podemos construirlo.
-            </p>
-            <a
-              href="https://wa.me/522223281100?text=Hola,%20me%20interesa%20agendar%20una%20consulta%20técnica"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-blue-600 hover:bg-blue-500 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 text-base"
-            >
-              <MessageCircle className="mr-2 w-5 h-5" />
-              Chatear con un ingeniero
-            </a>
-          </div>
-        </div>
-
-        {/* Main Footer Content */}
-        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-2 pr-8">
-            <div className="mb-6">
-              <div className="w-40 h-12 relative flex items-center">
-                <Image
-                  src="/assets/GlowelClaro.svg"
-                  alt="Glowel - Ingeniería de Software"
-                  fill
-                  className="object-contain object-left"
-                />
-              </div>
+    <footer data-tono="noche" className="bg-superficie text-tinta">
+      <Container>
+        {/*
+          Aquí había otro botón de WhatsApp. La sección de contacto, justo
+          encima, ya es exactamente esa llamada: dos veces seguidas no es
+          énfasis, es ruido.
+        */}
+        <div className="grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.7fr_1fr_1fr_1.1fr]">
+          <div className="lg:pr-10">
+            <div className="relative flex h-12 w-40 items-center">
+              <Image
+                src="/assets/GlowelClaro.svg"
+                alt="Glowel"
+                fill
+                className="object-contain object-left"
+              />
             </div>
-            <p className="text-slate-400 mb-6 leading-relaxed text-sm">
-              Somos una firma de ingeniería especializada en desarrollo web avanzado, software a medida, inteligencia artificial y automatización de procesos. Construimos soluciones tecnológicas escalables que resuelven problemas complejos de negocio.
+            <p className="mt-6 text-sm leading-relaxed text-suave">
+              Hacemos páginas, sistemas y plataformas a la medida para negocios
+              en México. Todo escrito desde cero, sin plantillas, y el código
+              siempre es tuyo.
             </p>
-          </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="text-base font-semibold mb-6 text-slate-100 uppercase tracking-wider">Pilares</h4>
-            <ul className="space-y-4 text-sm">
-              <li>
-                <Link
-                  href="/servicios/desarrollo-web"
-                  className="text-slate-400 hover:text-white transition-colors"
-                >
-                  Desarrollo Web Avanzado
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/servicios/software-a-medida"
-                  className="text-slate-400 hover:text-white transition-colors"
-                >
-                  Software a Medida
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/servicios/inteligencia-artificial"
-                  className="text-slate-400 hover:text-white transition-colors"
-                >
-                  Inteligencia Artificial
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/servicios/automatizaciones"
-                  className="text-slate-400 hover:text-white transition-colors"
-                >
-                  Automatizaciones
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/servicios/analisis-de-datos"
-                  className="text-slate-400 hover:text-white transition-colors"
-                >
-                  Análisis de Datos
-                </Link>
-              </li>
+            <ul className="mt-7 flex gap-3">
+              {redes.map(({ nombre, href, Icono }) => (
+                <li key={nombre}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Glowel en ${nombre}`}
+                    className="flex size-10 items-center justify-center rounded-full border border-linea text-suave transition-colors hover:border-acento hover:text-acento focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento"
+                  >
+                    <Icono className="size-[18px]" />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {grupos.map((grupo) => (
+            <nav key={grupo.titulo} aria-label={grupo.titulo}>
+              <h2 className="text-sm font-semibold uppercase tracking-widest text-tinta">
+                {grupo.titulo}
+              </h2>
+              <ul className="mt-6 space-y-4 text-sm">
+                {grupo.enlaces.map((e) => (
+                  <li key={e.href}>
+                    <Link
+                      href={e.href}
+                      className="text-suave transition-colors hover:text-tinta"
+                    >
+                      {e.nombre}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+
           <div>
-            <h4 className="text-base font-semibold mb-6 text-slate-100 uppercase tracking-wider">Contacto</h4>
-            <div className="space-y-4 text-sm">
-              <a href="mailto:glowel.dev@gmail.com" className="flex items-center text-slate-400 hover:text-white transition-colors">
-                <Mail className="w-4 h-4 mr-3" />
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-tinta">
+              Contacto
+            </h2>
+            <div className="mt-6 space-y-4 text-sm">
+              <a
+                href="mailto:glowel.dev@gmail.com"
+                className="flex items-center text-suave transition-colors hover:text-tinta"
+              >
+                <Mail className="mr-3 h-4 w-4 flex-shrink-0" aria-hidden="true" />
                 glowel.dev@gmail.com
               </a>
-              <a href="tel:+522223281100" className="flex items-center text-slate-400 hover:text-white transition-colors">
-                <Phone className="w-4 h-4 mr-3" />
-                222 328 1100
+              <a
+                href="tel:+522224944012"
+                className="flex items-center text-suave transition-colors hover:text-tinta"
+              >
+                <Phone className="mr-3 h-4 w-4 flex-shrink-0" aria-hidden="true" />
+                222 494 4012
               </a>
-              <div className="flex items-start text-slate-400">
-                <MapPin className="w-4 h-4 mr-3 mt-0.5 flex-shrink-0" />
-                <div className="space-y-1">
-                  <p>Monterrey, N.L.</p>
-                  <p>Cholula, Puebla</p>
-                  <p>Orizaba, Veracruz</p>
-                </div>
-              </div>
+              {/*
+                Una plaza, la real. Antes eran tres ciudades en renglones, que
+                se leían como tres oficinas. La cobertura se dice aparte, que es
+                lo que de verdad significaba esa lista.
+              */}
+              <p className="flex items-start text-suave">
+                <MapPin
+                  className="mr-3 mt-0.5 h-4 w-4 flex-shrink-0"
+                  aria-hidden="true"
+                />
+                <span>San Andrés Cholula, Puebla</span>
+              </p>
+              <p className="pl-7 text-sm leading-relaxed text-tenue">
+                Trabajamos con negocios de todo México, a distancia.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Bottom Footer */}
-        <div className="py-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-slate-500 text-sm">
-            © {currentYear} Glowel Ingeniería. Todos los derechos reservados.
-          </div>
-          <div className="flex space-x-6 text-sm">
-            <Link
-              href="/legal"
-              className="text-slate-500 hover:text-slate-300 transition-colors"
-            >
-              Política de Privacidad
-            </Link>
-            <Link
-              href="/legal"
-              className="text-slate-500 hover:text-slate-300 transition-colors"
-            >
-              Términos de Servicio
-            </Link>
-          </div>
+        {/*
+          Aquí iban el aviso de privacidad y los términos. La página se retiró
+          hasta que un abogado la revise: publicar un legal en borrador obliga
+          más de lo que protege. Al volver, los enlaces regresan aquí.
+        */}
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-linea py-8 md:flex-row">
+          <p className="text-sm text-tenue">
+            © {year} Glowel. Todos los derechos reservados.
+          </p>
+          <p className="text-sm text-tenue">
+            Desarrollo web a la medida en Puebla y todo México
+          </p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 };

@@ -1,41 +1,73 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
 import "./globals.css";
+import DatosEstructurados from "@/components/DatosEstructurados";
+import { niveles } from "@/data/servicios";
+import { SITIO, REDES, TELEFONO, CORREO } from "@/data/sitio";
 
-const inter = Inter({
+// Dos caras con trabajos distintos: la de titulares tiene carácter y se usa
+// poco; la de cuerpo es la que se lee en párrafos largos.
+const fuenteTitular = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--fuente-titular",
+  display: "swap",
+});
+
+const fuenteCuerpo = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--fuente-cuerpo",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Ingeniería de Software, IA y Análisis de Datos | Glowel México",
-  description: "Firma de ingeniería especializada en desarrollo web avanzado, software a medida, inteligencia artificial y automatización de procesos. Soluciones complejas para empresas.",
-  keywords: "firma de ingeniería de software, agencia tecnológica méxico, transformación digital para empresas, consultora tecnológica y de desarrollo, desarrollo de soluciones tecnológicas complejas, proveedor de servicios de software tics, ingeniería informática para corporativos, desarrollo tecnológico a medida, startup de desarrollo de software innovador, expertos en tecnologías de la información, consultoría en arquitectura de sistemas, desarrollo cloud aws google cloud, ingeniería de datos y software avanzado, soluciones deep tech, desarrolladores de software freelance bidiomas, servicios de programación y desarrollo de sistemas, outsourcing tecnológico de alto nivel, empresa de tecnologia, empresa de programadores, agencia de paginas web y apps, hacer sistema web, crear tecnologia para negocio, servicios de programacion, hacer aplicacion, quiero crear un software, como sistematizar mi negocio, expertos en tecnologia, desarrollo de plataformas de internet, programadores web y sistemas, hacer programa informatico",
-  authors: [{ name: "Glowel - Ingeniería de Software y Datos" }],
-  metadataBase: new URL("https://glowel.com.mx"),
+  metadataBase: new URL(SITIO),
+  /*
+    La plantilla deja que cada página ponga solo su nombre y la marca se pega
+    sola. Antes cada archivo repetía «| Glowel» a mano, y bastaba olvidarlo una
+    vez para tener un resultado de búsqueda sin marca.
+  */
+  title: {
+    default: "Diseño de páginas web y sistemas a la medida | Glowel",
+    template: "%s | Glowel",
+  },
+  description:
+    "Diseñamos y programamos la página de tu negocio, tu tienda en línea o tu sistema de reservas e inventario. Estamos en Puebla y trabajamos con todo México. Lo ves funcionando en 2 o 3 días antes de pagar. Desde $6,000.",
+  applicationName: "Glowel",
+  creator: "Glowel",
+  publisher: "Glowel",
+  category: "Desarrollo web",
+  /* El teléfono ya es un enlace donde debe serlo; que Safari no invente más. */
+  formatDetection: { telephone: false, address: false, email: false },
+  keywords: [
+    "paginas web mexico",
+    "crear pagina web para mi negocio",
+    "diseño de paginas web",
+    "cuanto cuesta una pagina web",
+    "hacer tienda en linea",
+    "sistema de inventario a medida",
+    "sistema de reservas y citas",
+    "desarrollo de software a la medida",
+    "pagina web para negocio pequeño",
+    "programador de paginas web",
+    "plataforma web a la medida",
+    "sitio web profesional mexico",
+  ],
+  authors: [{ name: "Glowel" }],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Ingeniería de Software, IA y Análisis de Datos | Glowel",
-    description: "Desarrollamos soluciones tecnológicas complejas y a medida para escalar la operación de empresas en México.",
+    title: "Sitios y sistemas hechos para tu negocio | Glowel",
+    description:
+      "Páginas web, tiendas en línea y sistemas a la medida. Lo ves funcionando antes de pagar nada. Desde $6,000 MXN.",
     type: "website",
-    url: "https://glowel.com.mx/",
-    images: [
-      {
-        url: "https://glowel.com.mx/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Glowel - Ingeniería de Software, IA y Análisis de Datos",
-      },
-    ],
+    url: SITIO,
     siteName: "Glowel",
     locale: "es_MX",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ingeniería de Software y IA | Glowel",
-    description: "Automatización, software a medida y desarrollo web avanzado para empresas.",
-    images: ["https://glowel.com.mx/og-image.jpg"],
-    site: "@glowel_dev",
+    title: "Sitios y sistemas hechos para tu negocio | Glowel",
+    description:
+      "Páginas web, tiendas en línea y sistemas a la medida. Lo ves funcionando antes de pagar. Desde $6,000 MXN.",
   },
   robots: {
     index: true,
@@ -49,135 +81,123 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    "theme-color": "#020617",
-    "geo.region": "MX",
-    "geo.placename": "México",
+    "theme-color": "#0b1b27",
+    "geo.region": "MX-PUE",
+    "geo.placename": "San Andrés Cholula, Puebla",
     language: "es-MX",
   },
+  /*
+    El icono de Apple estaba en SVG, formato que Safari no acepta ahí: en un
+    iPhone que guardara el sitio en la pantalla de inicio salía un cuadro en
+    blanco. Ahora apunta al PNG de la marca.
+  */
   icons: {
-    icon: [
-      { url: "/assets/GlowelClaro.svg", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/assets/GlowelClaro.svg", type: "image/svg+xml" }],
     apple: [
-      { url: "/assets/GlowelClaro.svg", sizes: "180x180" },
+      {
+        url: "/assets/perfil/glowel-perfil-marca.png",
+        sizes: "1000x1000",
+        type: "image/png",
+      },
     ],
   },
 };
 
-// JSON-LD Structured Data
 const jsonLdProfessionalService = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Glowel Ingeniería",
-  alternateName: ["Glowel Software", "Glowel.com.mx"],
+  "@id": "https://glowel.com.mx/#organization",
+  name: "Glowel",
   url: "https://glowel.com.mx",
+  /*
+    Mapa de bits, no SVG: Google rechaza el vectorial para el logotipo del
+    panel de marca, así que apuntaba a un archivo que nunca iba a usar.
+  */
   logo: {
     "@type": "ImageObject",
-    url: "https://glowel.com.mx/assets/GlowelClaro.svg",
-    width: 512,
-    height: 512,
+    url: `${SITIO}/assets/perfil/glowel-perfil-marca.png`,
+    width: 1000,
+    height: 1000,
   },
-  image: "https://glowel.com.mx/og-image.jpg",
-  description: "Firma de ingeniería especializada en desarrollo web avanzado, software a medida, inteligencia artificial y análisis de datos en México.",
-  telephone: "+522223281100",
-  email: "glowel.dev@gmail.com",
+  image: `${SITIO}/opengraph-image`,
+  description:
+    "Desarrollo de páginas web y sistemas a la medida para negocios en México: sitios de negocio, tiendas en línea, reservas, inventarios y plataformas propias.",
+  telephone: TELEFONO,
+  email: CORREO,
   foundingDate: "2024",
-  slogan: "Ingeniería de Software, IA y Datos para Empresas",
+  slogan: "Del sitio web al sistema completo",
+  priceRange: "$$",
+  // La plaza real, para que Google pueda ubicarnos en búsquedas locales. La
+  // cobertura va aparte: el país entero, que es a donde sí llegamos.
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "San Andrés Cholula",
+    addressRegion: "Puebla",
+    addressCountry: "MX",
+  },
   areaServed: [
-    { "@type": "City", name: "Ciudad de México", alternateName: "CDMX" },
+    { "@type": "City", name: "San Andrés Cholula" },
     { "@type": "City", name: "Puebla" },
-    { "@type": "City", name: "Cholula" },
-    { "@type": "City", name: "Veracruz" },
-    { "@type": "City", name: "Monterrey" },
-    { "@type": "State", name: "Nuevo León" },
     { "@type": "Country", name: "México" },
   ],
+  /*
+    El catálogo se arma desde los mismos datos que dibujan el sitio, con los
+    nombres que el visitante ve y la dirección de su bloque de precios. Antes
+    era una copia a mano con los nombres internos: cuando cambió el precio, la
+    página decía una cosa y Google seguía leyendo otra.
+  */
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Servicios de Ingeniería de Software",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Desarrollo Web Avanzado", description: "Arquitecturas web escalables y de alto rendimiento" },
+    name: "Desarrollo web y sistemas a la medida",
+    itemListElement: niveles.map((nivel) => ({
+      "@type": "Offer",
+      url: `${SITIO}/precios#${nivel.ancla}`,
+      itemOffered: {
+        "@type": "Service",
+        name: nivel.llano,
+        description: nivel.promesa,
+        serviceType: nivel.nombre,
+        provider: { "@id": `${SITIO}/#organization` },
+        areaServed: { "@type": "Country", name: "México" },
       },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Software a Medida", description: "Sistemas ERP/CRM y automatizaciones personalizadas" },
+      priceCurrency: "MXN",
+      price: nivel.precio.replace(/[^0-9]/g, ""),
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        minPrice: nivel.precio.replace(/[^0-9]/g, ""),
+        priceCurrency: "MXN",
+        valueAddedTaxIncluded: false,
       },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Inteligencia Artificial", description: "Modelos de Machine Learning, NLP y visión por computadora" },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Automatizaciones", description: "Optimización técnica de flujos de trabajo" },
-      },
-      {
-        "@type": "Offer",
-        itemOffered: { "@type": "Service", name: "Análisis de Datos", description: "Dashboards e insights basados en datos corporativos" },
-      },
-    ],
+      availability: "https://schema.org/InStock",
+    })),
   },
   contactPoint: [
-    { "@type": "ContactPoint", telephone: "+522223281100", contactType: "customer service", availableLanguage: ["es"], areaServed: "MX" },
-  ],
-  sameAs: ["https://wa.me/522223281100"],
-};
-
-const jsonLdOrganization = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://glowel.com.mx/#organization",
-  name: "Glowel Ingeniería",
-  url: "https://glowel.com.mx",
-  logo: {
-    "@type": "ImageObject",
-    "@id": "https://glowel.com.mx/#logo",
-    url: "https://glowel.com.mx/assets/GlowelClaro.svg",
-    contentUrl: "https://glowel.com.mx/assets/GlowelClaro.svg",
-    caption: "Glowel - Ingeniería de Software y Datos",
-  },
-  sameAs: ["https://wa.me/522223281100"],
-};
-
-const jsonLdFAQ = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
     {
-      "@type": "Question",
-      name: "¿Qué tecnologías utilizan para el desarrollo de software a medida?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Construimos con stacks modernos probados en producción. Para el frontend usamos React, Next.js y TypeScript. En el backend utilizamos Node.js, Python y bases de datos como PostgreSQL. Para IA implementamos TensorFlow y bibliotecas de Python alojadas en ecosistemas Cloud (AWS, Vercel).",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Pueden integrar Inteligencia Artificial en mis sistemas actuales?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Sí. Analizamos tus fuentes de datos actuales, desarrollamos modelos específicos (como procesamiento de lenguaje natural o visión computacional) y los integramos vía APIs a los sistemas ERP o CRM que ya esté usando tu empresa.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Ofrecen evaluación técnica para proyectos complejos?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Sí, agendamos una consulta gratuita con uno de nuestros ingenieros para levantar requerimientos, analizar la viabilidad del proyecto de datos o software y generar un diagrama arquitectónico junto a la cotización sin compromiso.",
-      },
+      "@type": "ContactPoint",
+      telephone: TELEFONO,
+      email: CORREO,
+      contactType: "customer service",
+      availableLanguage: ["es"],
+      areaServed: "MX",
     },
   ],
+  // Así confirma Google que el negocio del sitio y el de las redes son el mismo.
+  sameAs: [REDES.whatsapp, REDES.facebook, REDES.instagram],
 };
 
+/*
+  Las preguntas frecuentes vivían aquí, en el layout, así que se declaraban en
+  /precios, /portafolio y en cada caso — páginas donde no hay ni una pregunta a
+  la vista. Google pide que este marcado corresponda a contenido visible en esa
+  URL y penaliza cuando no; ahora lo monta el inicio, que es donde se muestran.
+*/
 const jsonLdWebSite = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Glowel - Firma de Ingeniería",
-  alternateName: "Glowel.com.mx",
-  url: "https://glowel.com.mx",
-  publisher: { "@id": "https://glowel.com.mx/#organization" },
+  name: "Glowel",
+  url: SITIO,
+  inLanguage: "es-MX",
+  publisher: { "@id": `${SITIO}/#organization` },
 };
 
 export default function RootLayout({
@@ -186,9 +206,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es-MX" className={`${inter.variable} antialiased scroll-smooth`}>
+    // data-scroll-behavior lo pide Next para saber que el scroll suave es
+    // nuestro: sin él no lo desactiva durante un cambio de ruta, y el salto a
+    // un ancla de otra página puede quedarse a medio camino.
+    <html
+      lang="es-MX"
+      data-scroll-behavior="smooth"
+      className={`${fuenteTitular.variable} ${fuenteCuerpo.variable} scroll-smooth antialiased`}
+    >
       <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Q6EZE68P2"></script>
+        {/* Abre la conexión con Google antes de pedirle el archivo. */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-0Q6EZE68P2"
+        ></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -199,27 +231,17 @@ export default function RootLayout({
             `,
           }}
         />
-        <link rel="mask-icon" href="/assets/GlowelClaro.svg" color="#020617" />
-        <link rel="image_src" href="https://glowel.com.mx/assets/GlowelClaro.png?v=2" />
-        <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdProfessionalService) }}
+        <link rel="mask-icon" href="/assets/GlowelClaro.svg" color="#0b1b27" />
+        <link
+          rel="sitemap"
+          type="application/xml"
+          title="Sitemap"
+          href="/sitemap.xml"
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFAQ) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
-        />
+        <DatosEstructurados datos={jsonLdProfessionalService} />
+        <DatosEstructurados datos={jsonLdWebSite} />
       </head>
-      <body className="font-sans bg-white text-slate-900 overflow-x-hidden selection:bg-blue-600/30">
+      <body className="overflow-x-hidden bg-white font-sans text-noche selection:bg-marca/35">
         {children}
       </body>
     </html>

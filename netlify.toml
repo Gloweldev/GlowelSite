@@ -1,3 +1,37 @@
 [build]
-  command = "npm run build"
+  command = "pnpm build"
   publish = ".next"
+
+# Las cinco páginas de servicios se consolidaron en /servicios.
+# 301 explícito por ruta: estaban indexadas y hay que conservar su autoridad.
+# Next.js emite 308 con `permanent: true`, por eso el redirect vive aquí.
+
+[[redirects]]
+  from = "/servicios/desarrollo-web"
+  to = "/servicios"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/software-a-medida"
+  to = "/servicios"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/inteligencia-artificial"
+  to = "/servicios"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/automatizaciones"
+  to = "/servicios"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/servicios/analisis-de-datos"
+  to = "/servicios"
+  status = 301
+  force = true

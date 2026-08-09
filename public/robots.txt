@@ -1,5 +1,15 @@
 User-agent: *
 Allow: /
-Disallow: /api/
+
+# Los asistentes de IA ya son un canal de descubrimiento: cuando alguien
+# pregunta "quién hace páginas web en Puebla", conviene que puedan citarnos.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
 
 Sitemap: https://glowel.com.mx/sitemap.xml

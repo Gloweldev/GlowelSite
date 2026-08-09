@@ -1,20 +1,18 @@
-import { MessageCircle } from "lucide-react";
+import { IconoWhatsApp } from "@/components/ui";
+import { waLink } from "@/data/servicios";
 
 const WhatsAppFloat = () => {
   return (
     <a
-      href="https://wa.me/522223281100?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios"
+      href={waLink("Hola, me interesa conocer más sobre sus servicios")}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 group"
+      aria-label="Escríbenos por WhatsApp"
+      // El verde oficial de WhatsApp. Es el único color ajeno a la paleta que
+      // se permite en el sitio: aquí lo que importa es que se reconozca.
+      className="fixed bottom-6 right-6 z-50 rounded-full bg-[#25D366] p-4 text-white shadow-lg transition-colors hover:bg-[#1FBF5B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]"
     >
-      <MessageCircle className="w-6 h-6 group-hover:animate-pulse" />
-
-      {/* Tooltip */}
-      <div className="absolute right-full top-1/2 transform -translate-y-1/2 mr-3 bg-slate-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        ¡Escríbenos por WhatsApp!
-        <div className="absolute left-full top-1/2 transform -translate-y-1/2 border-4 border-transparent border-l-slate-800"></div>
-      </div>
+      <IconoWhatsApp className="size-6" />
     </a>
   );
 };

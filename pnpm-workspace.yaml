@@ -1,0 +1,8 @@
+# Scripts de instalación permitidos. Todo lo demás se instala sin ejecutar código.
+allowBuilds:
+  sharp: true
+  unrs-resolver: true
+
+# No instalar versiones publicadas hace menos de 7 días. Los paquetes comprometidos
+# suelen detectarse y despublicarse en las primeras horas.
+minimumReleaseAge: 10080

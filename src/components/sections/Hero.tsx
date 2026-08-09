@@ -1,94 +1,103 @@
-import { ArrowRight, ChevronDown } from "lucide-react";
+import {
+  Container,
+  Section,
+  BotonLink,
+  BotonExterno,
+  IconoWhatsApp,
+} from "@/components/ui";
+import SitioDeMuestra from "@/components/SitioDeMuestra";
+import { waLink } from "@/data/servicios";
 
+/**
+ * Hero centrado.
+ *
+ * De catorce estudios revisados, los que centran el texto siempre ponen el
+ * producto justo debajo —Webflow, Linear, Squarespace—; los que solo centran
+ * texto se ven vacíos. Aquí el producto es un sitio, así que debajo va un sitio.
+ *
+ * Todo el hero cabe en una pantalla. El sitio de muestra se corta contra el
+ * pliegue a propósito: da altura sin costar scroll, y se lee como que la página
+ * sigue hacia abajo.
+ */
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.15%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%221.5%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] bg-repeat"></div>
-      </div>
+    <Section
+      tono="noche"
+      espaciado="ninguno"
+      className="relative overflow-hidden"
+    >
+      {/* La marca se llama Glowel: la luz es suya, no un adorno de moda. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 -top-32 h-[52rem]"
+        style={{
+          background:
+            "radial-gradient(56rem 30rem at 50% 28%, rgba(238,176,99,0.17), transparent 68%)",
+        }}
+      />
 
-      {/* Subtle Gradient Orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-teal-600/8 rounded-full blur-3xl"></div>
+      <Container className="relative pt-28 text-center sm:pt-32 lg:pt-36">
+        {/* La escala baja en pantallas chicas: a 41px el titular se rompía en
+            cinco renglones y dejaba de leerse de un golpe. */}
+        <h1 className="emerge mx-auto max-w-4xl font-titular text-[2.35rem] font-bold leading-[1.05] tracking-[-0.035em] text-balance text-tinta sm:text-5xl sm:leading-[1.03] md:text-6xl lg:text-[4.25rem]">
+          Sitios y sistemas hechos para{" "}
+          <span className="text-acento">tu negocio.</span>
+        </h1>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 sm:py-24 lg:py-28">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
-            Ingeniería de{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-              software
-            </span>
-            ,{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-              IA
-            </span>{" "}
-            y{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">
-              datos
-            </span>{" "}
-            para tu negocio
-          </h1>
+        {/*
+          Dos productos, no una lista revuelta. Primero la página, que es lo que
+          casi todo el que llega viene buscando; el sistema entra después y solo
+          si se reconoce en el ejemplo.
+        */}
+        <p
+          className="emerge mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-suave sm:text-xl"
+          style={{ animationDelay: "90ms" }}
+        >
+          Diseñamos tu página desde cero. Y si necesitas vender en línea,
+          agendar citas o llevar inventario, construimos el sistema.
+        </p>
 
-          {/* Subtitle */}
-          <p className="text-lg sm:text-xl lg:text-2xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Diseñamos y construimos soluciones tecnológicas complejas —{" "}
-            <span className="text-slate-200">
-              desde aplicaciones web de alto rendimiento hasta modelos de inteligencia artificial
-            </span>{" "}
-            — que automatizan procesos y escalan tu operación.
-          </p>
-
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
-            <a
-              href="https://wa.me/522223281100?text=Hola,%20me%20interesa%20agendar%20una%20consulta%20técnica%20para%20mi%20proyecto"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 text-base"
-            >
-              Agendar consulta técnica
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a
-              href="#portafolio"
-              className="inline-flex items-center px-8 py-4 border border-white/20 text-white hover:bg-white/5 font-medium rounded-xl transition-all duration-300 text-base"
-            >
-              Ver portafolio
-            </a>
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-slate-500 text-sm">
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
-              <span>Prototipo sin costo</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
-              <span>3 meses de soporte incluidos</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
-              <span>Infraestructura Cloud</span>
-            </div>
-          </div>
+        {/* En celular los botones se estiran: son el blanco del pulgar. */}
+        <div
+          className="emerge mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
+          style={{ animationDelay: "180ms" }}
+        >
+          <BotonExterno
+            href={waLink("Hola, quiero información para mi negocio")}
+            className="w-full max-w-xs sm:w-auto sm:max-w-none"
+          >
+            <IconoWhatsApp className="size-5" />
+            Escríbenos por WhatsApp
+          </BotonExterno>
+          <BotonLink
+            href="#precios"
+            variante="secundario"
+            className="w-full max-w-xs sm:w-auto sm:max-w-none"
+          >
+            Ver precios
+          </BotonLink>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="hidden sm:block">
-            <div className="w-6 h-10 border-2 border-slate-600 rounded-full flex justify-center hover:border-slate-400 transition-colors cursor-pointer">
-              <div className="w-1 h-3 bg-slate-500 rounded-full mt-2 animate-bounce"></div>
-            </div>
-          </div>
-          <div className="sm:hidden flex flex-col items-center text-slate-500">
-            <ChevronDown className="w-5 h-5 animate-bounce" />
-          </div>
+        {/* La razón para escribir, donde se decide si escribir. */}
+        <p
+          className="emerge mt-6 text-sm text-tenue"
+          style={{ animationDelay: "240ms" }}
+        >
+          Te lo enseñamos funcionando antes de que pagues nada.
+        </p>
+
+        {/*
+          El ancla de la composición: un hero centrado sin nada debajo flota.
+          Esto es lo que el cliente viene a comprar, armándose solo.
+        */}
+        <div
+          className="emerge mx-auto mt-11 max-w-2xl pb-16 sm:mt-14 sm:pb-20 lg:pb-24"
+          style={{ animationDelay: "300ms" }}
+        >
+          <SitioDeMuestra />
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 

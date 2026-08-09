@@ -1,43 +1,41 @@
 import type { MetadataRoute } from "next";
+import { casos } from "@/data/portafolio";
+
+const baseUrl = "https://glowel.com.mx";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://glowel.com.mx";
-  const currentDate = new Date();
+  const lastModified = new Date();
 
-  // Rutas principales
-  const routes = [
+  return [
     {
       url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 1.0,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 1,
     },
+    {
+      url: `${baseUrl}/servicios`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/precios`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/portafolio`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...casos.map((caso) => ({
+      url: `${baseUrl}/portafolio/${caso.slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
   ];
-
-  // Servicios core (Alta prioridad para SEO)
-  const services = [
-    "desarrollo-web",
-    "software-a-medida",
-    "inteligencia-artificial",
-    "automatizaciones",
-    "analisis-de-datos",
-  ].map((slug) => ({
-    url: `${baseUrl}/servicios/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: "weekly" as const,
-    priority: 0.9,
-  }));
-
-  // Portafolio (Demos / Iframes indexables)
-  const portfolio = [
-    "ensenasai",
-    "onyx-seguridad",
-  ].map((slug) => ({
-    url: `${baseUrl}/#portafolio`,
-    lastModified: currentDate,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-
-  return [...routes, ...services, ...portfolio];
 }
