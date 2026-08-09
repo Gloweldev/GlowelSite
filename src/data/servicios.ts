@@ -18,8 +18,12 @@ export type ColumnaPrecio = {
   /** Una línea que resume para quién es. */
   alcance: string;
   distingue: string[];
-  /** Cuando no hay extras, se dice qué NO trae. Marca el escalón sin mentir. */
-  carece?: string;
+  /**
+   * «Todo lo de En línea, más:». Solo para escaleras donde cada nivel contiene
+   * al anterior, como los planes mensuales: ahí no hay una base común que se
+   * pueda sacar debajo de la tabla, porque el plan de abajo *es* la base.
+   */
+  hereda?: string;
   recomendado?: boolean;
   mensaje: string;
 };
@@ -30,28 +34,39 @@ export const paquetesDesarrollo: ColumnaPrecio[] = [
   {
     nombre: "Esencial",
     precio: "$6,000",
-    alcance: "Todo en una sola página",
-    distingue: ["Hasta 6 secciones"],
+    alcance: "Hasta 2 páginas",
+    distingue: [
+      "Hasta 6 secciones en total",
+      "Menú de navegación entre las dos páginas",
+      "Para el negocio que se explica en una vista y un contacto",
+      "Se puede ampliar después sin rehacerlo",
+    ],
     mensaje: "Hola, me interesa el paquete Esencial",
   },
   {
     nombre: "Profesional",
     precio: "$9,500",
-    alcance: "Todo en una sola página",
+    alcance: "Hasta 5 páginas, o todo en una sola",
     distingue: [
-      "Hasta 12 secciones",
+      "Tú eliges la forma: cinco páginas separadas o una sola larga",
+      "Hasta 12 secciones en total",
       "Menú para ir directo a cada parte",
+      "Cada página con su propia dirección, para compartirla sola",
+      "Google puede encontrar cada servicio por separado",
     ],
     recomendado: true,
     mensaje: "Hola, me interesa el paquete Profesional",
   },
   {
     nombre: "Multipágina",
-    precio: "desde $15,000",
-    alcance: "De 4 a 5 páginas separadas",
+    precio: "desde $12,500",
+    alcance: "Las páginas que necesite tu negocio",
     distingue: [
-      "Cada página con su propia dirección, para compartirla sola",
-      "Google puede encontrar cada servicio por separado",
+      "Sin tope de páginas ni de secciones",
+      "La estructura se diseña contigo, no se elige de una lista",
+      "Para catálogos amplios o varias líneas de negocio",
+      "Una dirección por servicio, cada una peleando su búsqueda",
+      "Precio cerrado por escrito según la extensión que acordemos",
     ],
     mensaje: "Hola, me interesa el paquete Multipágina",
   },
@@ -93,14 +108,30 @@ export const noIncluido = [
 
 /* --------------------------------------------------- Bloque 2: cada mes */
 
+/**
+ * Escalera acumulativa: cada plan contiene al anterior.
+ *
+ * Por eso el detalle completo va en «En línea» y los de arriba solo dicen qué
+ * añaden. Antes lo común vivía debajo de la tabla y «En línea» se quedaba con
+ * la columna vacía —una sola línea gris diciendo lo que NO traía—, que es la
+ * peor manera de presentar el plan que más margen deja.
+ */
 export const planesMensuales: ColumnaPrecio[] = [
   {
     nombre: "En línea",
     precio: "$650",
     periodo: "/ mes",
-    alcance: "Lo necesario para que no se caiga",
-    distingue: [],
-    carece: "Sin horas de cambios ni reportes",
+    alcance: "Que tu sitio siga en línea y funcionando",
+    distingue: [
+      "Tu sitio publicado, con alojamiento incluido",
+      "Conexión segura, siempre vigente",
+      "Respaldos de todo tu sitio",
+      "Actualizaciones de seguridad",
+      "Vigilamos que esté en línea y te avisamos si se cae",
+      "Si algo se rompe, lo arreglamos sin costo",
+      "Hasta 25 GB de visitas al mes",
+      "Te respondemos en menos de 24 horas hábiles",
+    ],
     mensaje: "Hola, me interesa el plan En línea",
   },
   {
@@ -108,8 +139,9 @@ export const planesMensuales: ColumnaPrecio[] = [
     precio: "$1,800",
     periodo: "/ mes",
     alcance: "Para cuando cambias cosas seguido",
+    hereda: "Todo lo de En línea, más:",
     distingue: [
-      "2 horas al mes de cambios",
+      "2 horas al mes para cambios: textos, precios, fotos, productos",
       "Reporte mensual de cuánta gente te visitó",
     ],
     recomendado: true,
@@ -120,22 +152,14 @@ export const planesMensuales: ColumnaPrecio[] = [
     precio: "$3,500",
     periodo: "/ mes",
     alcance: "Nosotros nos encargamos de todo",
+    hereda: "Todo lo de Activo, más:",
     distingue: [
-      "5 horas al mes de cambios",
-      "Reporte mensual de cuánta gente te visitó",
+      "5 horas al mes para cambios",
       "Trabajo continuo para que Google te encuentre mejor",
-      "Te atendemos antes que a nadie",
+      "Te respondemos el mismo día hábil",
     ],
     mensaje: "Hola, me interesa el plan Gestionado",
   },
-];
-
-export const incluidoPlanes = [
-  "Tu sitio publicado y funcionando",
-  "Conexión segura",
-  "Respaldos",
-  "Actualizaciones y aviso si algo falla",
-  "Hasta 25 GB de visitas al mes",
 ];
 
 /* --------------------------------------------------- Niveles (página /servicios) */
@@ -197,7 +221,7 @@ export const niveles: Nivel[] = [
     promesa: "La página de tu negocio, hecha desde cero",
     precio: "$6,000",
     precioDepende:
-      "Según cuántas secciones lleve tu página. El paquete más pedido trae hasta doce.",
+      "Según cuántas páginas y secciones lleve. El paquete más pedido trae hasta cinco páginas y doce secciones.",
     caso: "Quiero que encuentren mi negocio.",
     sintoma:
       "Hoy solo tienes redes sociales, o una página vieja que ya no te representa.",

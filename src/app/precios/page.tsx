@@ -20,7 +20,6 @@ import {
   incluidoSiempre,
   noIncluido,
   planesMensuales,
-  incluidoPlanes,
   waLink,
 } from "@/data/servicios";
 import { migaDePan } from "@/data/sitio";
@@ -43,9 +42,9 @@ export const metadata: Metadata = {
  * exactamente en su bloque, que se enciende al llegar.
  *
  * Solo la página tiene paquetes publicables, porque su precio depende de algo
- * contable: cuántas secciones lleva. Un sistema y una plataforma no tienen dos
- * casos iguales, así que en lugar de inventarles una tabla se explica de qué
- * depende el número y se ofrece cotizar.
+ * contable: cuántas páginas y secciones lleva. Un sistema y una plataforma no
+ * tienen dos casos iguales, así que en vez de inventarles una tabla se explica
+ * de qué depende el número y se ofrece cotizar.
  */
 
 /**
@@ -123,9 +122,9 @@ export default function PreciosPage() {
               </Titular>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-suave">
                 Es la única que sí se puede publicar en paquetes, porque su
-                precio depende de algo que se cuenta: cuántas secciones lleva.
-                Eliges las que necesite tu negocio y el paquete marca cuántas
-                entran.
+                precio depende de algo que se cuenta: cuántas páginas y
+                cuántas secciones lleva. Eliges las que necesite tu negocio y el
+                paquete marca hasta dónde llega.
               </p>
 
               <div className="mt-10">
@@ -259,8 +258,6 @@ export default function PreciosPage() {
               <TablaPrecios
                 etiqueta="Cada mes"
                 columnas={planesMensuales}
-                comun={incluidoPlanes}
-                comunTitulo="Los tres incluyen"
                 notaPie="Sin permanencia forzosa. Si lo dejas, te entregamos todo sin costo."
                 variante="secundario"
               />

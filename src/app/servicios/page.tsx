@@ -155,8 +155,9 @@ export default function ServiciosPage() {
                     ))}
                   </ul>
                   <p className="mt-5 text-suave">
-                    Eliges las que necesite tu negocio. El paquete marca cuántas
-                    entran, y si quieres una más se agrega por $800.
+                    Eliges las que necesite tu negocio. El paquete marca
+                    cuántas páginas y cuántas secciones entran, y si quieres una
+                    sección más se agrega por $800.
                   </p>
                 </div>
 

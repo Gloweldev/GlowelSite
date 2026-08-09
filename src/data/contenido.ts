@@ -100,7 +100,7 @@ export const preguntas: Pregunta[] = [
   {
     pregunta: "¿Cuánto cuesta?",
     respuesta:
-      "Una página para tu negocio va de $6,000 a $18,000, según cuántas secciones lleve. Un sistema —tienda en línea, reservas, inventario— arranca en $15,000. Una plataforma con lógica propia, en $24,000. El número exacto lo cerramos por escrito antes de empezar.",
+      "Una página para tu negocio va de $6,000 a $12,500, según cuántas páginas y secciones lleve. Un sistema —tienda en línea, reservas, inventario— arranca en $15,000. Una plataforma con lógica propia, en $24,000. El número exacto lo cerramos por escrito antes de empezar.",
   },
   {
     pregunta: "¿Cuánto tarda?",

@@ -6,9 +6,14 @@ import { waLink, type ColumnaPrecio } from "@/data/servicios";
  * Tres opciones lado a lado. La recomendada se distingue por estructura
  * —superficie elevada y borde marcado— no por decoración.
  *
- * Lo que comparten las tres va una sola vez debajo, en `comun`. Repetirlo
- * dentro de cada columna haría que las tres empezaran igual y la comparación
- * se perdería en las primeras líneas.
+ * Sirve para las dos formas de comparar:
+ *
+ * - Opciones paralelas —los paquetes de página—: lo que comparten va una sola
+ *   vez debajo, en `comun`. Repetirlo en cada columna haría que las tres
+ *   empezaran igual y la comparación se perdería en las primeras líneas.
+ * - Escaleras acumulativas —los planes mensuales—: no se pasa `comun`, porque
+ *   ahí no hay base común que sacar; el plan de abajo es la base. Cada nivel
+ *   abre con `hereda` y lista solo lo que añade.
  */
 export default function TablaPrecios({
   etiqueta,
@@ -20,7 +25,7 @@ export default function TablaPrecios({
 }: {
   etiqueta: string;
   columnas: ColumnaPrecio[];
-  comun: string[];
+  comun?: string[];
   comunTitulo?: string;
   notaPie?: string;
   variante?: "primario" | "secundario";
@@ -67,7 +72,13 @@ export default function TablaPrecios({
               {col.alcance}
             </p>
 
-            <ul className="mt-5 flex-grow space-y-2.5">
+            {col.hereda && (
+              <p className="mt-5 text-sm font-semibold text-tinta">
+                {col.hereda}
+              </p>
+            )}
+
+            <ul className={`flex-grow space-y-2.5 ${col.hereda ? "mt-3" : "mt-5"}`}>
               {col.distingue.map((d) => (
                 <li key={d} className="flex gap-2.5 text-sm text-tinta">
                   <Check
@@ -77,9 +88,6 @@ export default function TablaPrecios({
                   <span>{d}</span>
                 </li>
               ))}
-              {col.distingue.length === 0 && col.carece && (
-                <li className="text-sm text-tenue">{col.carece}</li>
-              )}
             </ul>
 
             <BotonExterno
@@ -99,13 +107,21 @@ export default function TablaPrecios({
         ))}
       </div>
 
-      <div className="mt-8 border-t border-linea pt-6">
-        <p className="text-sm text-suave">
-          <span className="font-semibold text-tinta">{comunTitulo}:</span>{" "}
-          {comun.join(" · ")}.
-        </p>
-        {notaPie && <p className="mt-2 text-sm text-tenue">{notaPie}</p>}
-      </div>
+      {(comun || notaPie) && (
+        <div className="mt-8 border-t border-linea pt-6">
+          {comun && (
+            <p className="text-sm text-suave">
+              <span className="font-semibold text-tinta">{comunTitulo}:</span>{" "}
+              {comun.join(" · ")}.
+            </p>
+          )}
+          {notaPie && (
+            <p className={`text-sm text-tenue ${comun ? "mt-2" : ""}`}>
+              {notaPie}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 }
