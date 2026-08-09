@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | Glowel",
   },
   description:
-    "Diseñamos y programamos la página de tu negocio, tu tienda en línea o tu sistema de reservas e inventario. Estamos en Puebla y trabajamos con todo México. Lo ves funcionando en 2 o 3 días antes de pagar. Desde $6,000.",
+    "Diseñamos la página de tu negocio, tu tienda en línea o tu sistema de reservas. En Puebla y todo México. Lo ves funcionando antes de pagar. Desde $6,000.",
   applicationName: "Glowel",
   creator: "Glowel",
   publisher: "Glowel",

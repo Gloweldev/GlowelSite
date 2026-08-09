@@ -29,7 +29,7 @@ import DatosEstructurados from "@/components/DatosEstructurados";
 export const metadata: Metadata = {
   title: "¿Cuánto cuesta una página web? Precios publicados",
   description:
-    "Páginas web desde $6,000, sistemas —tienda en línea, reservas, inventario— desde $15,000 y plataformas a la medida desde $24,000 MXN. Mantenimiento desde $650 al mes. Sin cotización ni llamada de ventas.",
+    "Páginas web desde $6,000, sistemas desde $15,000 y plataformas a la medida desde $24,000 MXN. Mantenimiento desde $650 al mes. Sin cotizar ni esperar.",
   alternates: { canonical: "/precios" },
 };
 

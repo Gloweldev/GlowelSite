@@ -1,15 +1,13 @@
+# Cloudflare antepone su propio bloque a este archivo (Content Signals + AI
+# Crawl Control) y ahí ya bloquea a GPTBot, ClaudeBot, Google-Extended, CCBot y
+# compañía. Repetir aquí un "Allow" para esos mismos agentes solo dejaba el
+# archivo con dos grupos que se contradicen, y cada rastreador resuelve el
+# empate a su manera.
+#
+# Esa decisión se toma en el panel de Cloudflare, no en el repositorio.
+# Ver: Cloudflare → el dominio → AI Crawl Control / robots.txt gestionado.
+
 User-agent: *
-Allow: /
-
-# Los asistentes de IA ya son un canal de descubrimiento: cuando alguien
-# pregunta "quién hace páginas web en Puebla", conviene que puedan citarnos.
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
 Allow: /
 
 Sitemap: https://glowel.com.mx/sitemap.xml

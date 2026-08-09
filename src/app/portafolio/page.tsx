@@ -11,7 +11,7 @@ import DatosEstructurados from "@/components/DatosEstructurados";
 export const metadata: Metadata = {
   title: "Portafolio de proyectos web y sistemas",
   description:
-    "Proyectos construidos de principio a fin: un traductor de lengua de señas con inteligencia artificial, una plataforma que consigue intérpretes en minutos y sitios para empresas de seguridad y mantenimiento industrial.",
+    "Proyectos construidos de principio a fin: inteligencia artificial, una plataforma que consigue intérpretes en minutos y sitios para empresas.",
   alternates: { canonical: "/portafolio" },
 };
 

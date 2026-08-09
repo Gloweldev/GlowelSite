@@ -34,8 +34,8 @@ export async function generateMetadata({
   if (!caso) return {};
 
   return {
-    title: `${caso.nombre} — ${caso.quees}`,
-    description: caso.necesidad,
+    title: caso.seo.titulo,
+    description: caso.seo.descripcion,
     alternates: { canonical: `/portafolio/${caso.slug}` },
   };
 }

@@ -23,7 +23,7 @@ import DatosEstructurados from "@/components/DatosEstructurados";
 export const metadata: Metadata = {
   title: "Diseño web, tiendas en línea y sistemas a la medida",
   description:
-    "Qué consigue tu negocio con cada uno: una página que te encuentren en Google, un sistema que venda y agende por ti, o una plataforma con lógica propia. Explicado sin palabras técnicas.",
+    "Qué consigue tu negocio con cada uno: una página que te encuentren en Google, un sistema que venda y agende por ti, o una plataforma a la medida.",
   alternates: { canonical: "/servicios" },
 };
 

@@ -30,6 +30,15 @@ export type Caso = {
   resultado: string;
   /** Único lugar del sitio donde se permiten nombres técnicos. */
   tecnologias: string[];
+  /**
+   * Texto para el buscador, no para la página.
+   *
+   * El título salía de `nombre — quees` y llegaba a 86 caracteres; la
+   * descripción usaba `necesidad`, que ronda los 300. Google corta el título
+   * cerca de los 60 y la descripción cerca de los 160, así que quien nos veía
+   * en resultados leía una frase partida a la mitad.
+   */
+  seo: { titulo: string; descripcion: string };
 };
 
 /**
@@ -91,6 +100,12 @@ export const casos: Caso[] = [
       "PostgreSQL",
       "Firebase",
     ],
+    seo: {
+      titulo:
+        "EnSeñasAI — traductor de lengua de señas con IA",
+      descripcion:
+        "Traduce lengua de señas mexicana a texto en tiempo real desde la cámara, sin instalar nada. Construimos la plataforma completa y el modelo de IA.",
+    },
   },
   {
     slug: "redin",
@@ -169,6 +184,12 @@ export const casos: Caso[] = [
       "Zoom API",
       "Firebase",
     ],
+    seo: {
+      titulo:
+        "Redin — plataforma de intérpretes bajo demanda",
+      descripcion:
+        "Consigue intérpretes de lenguas indígenas en minutos: aviso por WhatsApp, videollamada automática y cobro por tiempo real. Sitio y plataforma.",
+    },
   },
   {
     slug: "onyx-seguridad",
@@ -235,6 +256,12 @@ export const casos: Caso[] = [
       "Tailwind CSS",
       "Framer Motion",
     ],
+    seo: {
+      titulo:
+        "Onyx Seguridad — sitio para seguridad privada",
+      descripcion:
+        "Sitio para empresa de seguridad privada en Puebla: sus ocho servicios, sus registros oficiales y el contacto por WhatsApp siempre a un toque.",
+    },
   },
   {
     slug: "stg",
@@ -292,6 +319,12 @@ export const casos: Caso[] = [
     resultado:
       "Un sitio que se ve a la altura de las marcas que representan, con sus cinco servicios claros y el contacto siempre a la vista. Y sin una sola afirmación que no puedan sostener frente a un cliente.",
     tecnologias: ["Next.js", "TypeScript", "Tailwind CSS"],
+    seo: {
+      titulo:
+        "STG — sitio para mantenimiento industrial",
+      descripcion:
+        "Sitio para empresa de mantenimiento crítico y generación de energía en Cancún. Cinco líneas de servicio y ni una afirmación fuera de su brochure.",
+    },
   },
 ];
 
